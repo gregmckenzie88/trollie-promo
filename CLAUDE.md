@@ -42,3 +42,7 @@ Logo Gold:       #C8A855    Logo Cream:      #E8E0D0
 ## Tech Stack (from product brief)
 
 The app itself uses Electron + React 18 + TypeScript + shadcn/ui + Tailwind CSS. The landing page tech stack has not been chosen yet — refer to any `package.json` or framework config files if they exist by the time you read this.
+
+## Git Policy
+
+**NEVER run `git add`, `git commit`, or `git push` under any circumstances.** All git staging, committing, and pushing is done exclusively by the human operator. This rule has no exceptions — do not offer, suggest, or execute these commands even if asked.
