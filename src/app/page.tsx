@@ -8,7 +8,7 @@ export default function Home() {
             Trollie
           </span>
           <a
-            href="#download"
+            href="/download"
             className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:brightness-110"
           >
             Download
@@ -54,7 +54,7 @@ export default function Home() {
             what matters.
           </p>
           <a
-            href="#download"
+            href="/download"
             className="inline-flex items-center gap-2 rounded-md bg-primary px-8 py-3.5 text-base font-medium text-primary-foreground transition-colors hover:brightness-110"
           >
             <DownloadIcon />
@@ -141,8 +141,7 @@ export default function Home() {
             through your workday. No distractions. Just focus.
           </p>
           <a
-            href="/Trollie.dmg"
-            download
+            href="/download"
             className="inline-flex items-center gap-2 rounded-md bg-primary px-8 py-3.5 text-base font-medium text-primary-foreground transition-colors hover:brightness-110"
           >
             <DownloadIcon />
