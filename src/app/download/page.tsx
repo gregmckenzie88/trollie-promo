@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const DOWNLOAD_URL = "/Trollie.dmg";
+const DOWNLOAD_URL = "https://github.com/gregmckenzie88/trollie-promo/releases/download/0.3.0/Trollie-0.3.0.dmg";
 
 export default function DownloadPage() {
   const [started, setStarted] = useState(false);
