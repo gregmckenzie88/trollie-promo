@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="min-h-screen">
@@ -159,6 +161,26 @@ export default function Home() {
           <span className="text-sm font-medium text-muted-foreground">
             Trollie
           </span>
+          <div className="flex items-center gap-6">
+            <Link
+              href="/privacy"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
+              Privacy
+            </Link>
+            <Link
+              href="/terms"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
+              Terms
+            </Link>
+            <Link
+              href="/refunds"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
+              Refunds
+            </Link>
+          </div>
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Trollie. All rights reserved.
           </p>
