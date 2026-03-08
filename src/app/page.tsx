@@ -99,9 +99,9 @@ export default function Home() {
               description="Choose from brown noise, rain, ocean waves, crackling fire, or ambient electronic — with smooth crossfades between tasks."
             />
             <FeatureCard
-              icon={<MicIcon />}
-              title="Voice Commands"
-              description='Push-to-talk control that works offline. Say "next task", "pause", or "add five minutes" without touching your keyboard.'
+              icon={<SessionIcon />}
+              title="Session Planning"
+              description="Queue up your tasks before you start, set time blocks for each, and let Trollie guide you through them one by one — no context-switching required."
             />
             <FeatureCard
               icon={<GlowIcon />}
@@ -250,7 +250,7 @@ function SoundscapeIcon() {
   );
 }
 
-function MicIcon() {
+function SessionIcon() {
   return (
     <svg
       width="20"
@@ -262,9 +262,10 @@ function MicIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-      <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-      <line x1="12" y1="19" x2="12" y2="22" />
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+      <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+      <path d="M9 12h6" />
+      <path d="M9 16h6" />
     </svg>
   );
 }
