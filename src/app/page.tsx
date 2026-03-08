@@ -63,7 +63,7 @@ export default function Home() {
         </div>
 
         {/* Audio waveform visualization */}
-        <div className="relative z-10 mt-16 flex items-end justify-center gap-[3px]">
+        <div className="relative z-10 mt-16 flex items-end justify-center gap-[3px]" aria-hidden="true">
           {Array.from({ length: 48 }).map((_, i) => (
             <div
               key={i}
