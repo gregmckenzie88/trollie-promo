@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ScrollVideo from "./components/ScrollVideo";
 
 export default function Home() {
   return (
@@ -79,8 +80,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Scroll-driven video demo */}
+      <ScrollVideo />
+
       {/* Features */}
-      <section className="border-t border-border px-6 py-24 sm:py-32">
+      <section className="px-6 py-24 sm:py-32">
         <div className="mx-auto max-w-5xl">
           <p className="mb-3 text-sm font-medium tracking-wider uppercase text-primary">
             Features
