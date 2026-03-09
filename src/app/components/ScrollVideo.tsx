@@ -7,7 +7,7 @@ const FRAME_PATH = '/frames/frame-';
 
 function getFrameSrc(index: number): string {
   const num = String(index + 1).padStart(4, '0');
-  return `${FRAME_PATH}${num}.jpg`;
+  return `${FRAME_PATH}${num}.webp`;
 }
 
 export default function ScrollVideo() {
