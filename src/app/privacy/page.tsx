@@ -26,8 +26,8 @@ export default function PrivacyPolicy() {
         </div>
       </nav>
 
-      <main className="mx-auto max-w-3xl px-6 pt-32 pb-20">
-        <h1 className="mb-2 text-4xl font-light tracking-tight text-foreground">
+      <main className="mx-auto max-w-3xl px-6 pt-24 sm:pt-32 pb-20">
+        <h1 className="mb-2 text-3xl font-light tracking-tight text-foreground sm:text-4xl">
           Privacy Policy
         </h1>
         <p className="mb-12 text-sm text-muted-foreground">

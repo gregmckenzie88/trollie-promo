@@ -127,12 +127,11 @@ export default function ScrollVideo() {
 
   return (
     <section ref={containerRef} className="relative h-[300vh]">
-      <div className="sticky top-0 flex h-screen items-center justify-center">
+      <div className="sticky top-0 flex h-[100svh] items-center justify-center">
         <div className="mx-auto w-full max-w-5xl px-6">
           <canvas
             ref={canvasRef}
-            className="w-full rounded-lg"
-            style={{ aspectRatio: '1920 / 1140' }}
+            className="w-full rounded-lg aspect-[1920/1140] max-sm:aspect-[4/3]"
           />
         </div>
         {/* Bottom fade to black */}

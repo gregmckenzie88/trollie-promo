@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ScrollVideo from "./components/ScrollVideo";
+import Waveform from "./components/Waveform";
 
 export default function Home() {
   return (
@@ -27,14 +28,14 @@ export default function Home() {
           aria-hidden="true"
         >
           <div
-            className="absolute top-0 left-1/2 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20"
+            className="absolute top-0 left-1/2 h-[600px] w-full max-w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20"
             style={{
               background:
                 "radial-gradient(ellipse, rgba(200, 184, 50, 0.15) 0%, transparent 70%)",
             }}
           />
           <div
-            className="absolute bottom-0 left-1/2 h-[400px] w-[600px] -translate-x-1/2 translate-y-1/2 rounded-full opacity-[0.15]"
+            className="absolute bottom-0 left-1/2 h-[400px] w-full max-w-[600px] -translate-x-1/2 translate-y-1/2 rounded-full opacity-[0.15]"
             style={{
               background:
                 "radial-gradient(ellipse, rgba(200, 184, 50, 0.1) 0%, transparent 70%)",
@@ -46,7 +47,7 @@ export default function Home() {
           <p className="mb-4 text-sm font-medium tracking-wider uppercase text-muted-foreground">
             For macOS
           </p>
-          <h1 className="mb-6 text-5xl font-light leading-tight tracking-tight text-foreground sm:text-6xl md:text-7xl">
+          <h1 className="mb-6 text-4xl font-light leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
             Stay on track.
             <br />
             <span className="text-primary">Stay focused.</span>
@@ -66,18 +67,7 @@ export default function Home() {
         </div>
 
         {/* Audio waveform visualization */}
-        <div className="relative z-10 mt-16 flex items-end justify-center gap-[3px]" aria-hidden="true">
-          {Array.from({ length: 48 }).map((_, i) => (
-            <div
-              key={i}
-              className="w-[3px] rounded-full bg-primary/40"
-              style={{
-                height: `${12 + Math.sin(i * 0.4) * 20 + Math.cos(i * 0.7) * 15}px`,
-                animation: `wave 2s ease-in-out ${i * 0.08}s infinite`,
-              }}
-            />
-          ))}
-        </div>
+        <Waveform />
       </section>
 
       {/* Scroll-driven video demo */}
@@ -129,7 +119,7 @@ export default function Home() {
           aria-hidden="true"
         >
           <div
-            className="absolute top-1/2 left-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+            className="absolute top-1/2 left-1/2 h-[500px] w-full max-w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full"
             style={{
               background:
                 "radial-gradient(ellipse, rgba(200, 184, 50, 0.06) 0%, transparent 70%)",
@@ -204,7 +194,7 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="border border-border bg-background p-8 transition-colors hover:bg-popover">
+    <div className="border border-border bg-background p-5 sm:p-8 transition-colors hover:bg-popover">
       <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-border text-primary">
         {icon}
       </div>
