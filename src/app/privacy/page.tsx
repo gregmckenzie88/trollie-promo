@@ -4,6 +4,13 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Trollie privacy policy — how we handle your data.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy | Trollie",
+    description: "Trollie privacy policy — how we handle your data.",
+  },
 };
 
 export default function PrivacyPolicy() {

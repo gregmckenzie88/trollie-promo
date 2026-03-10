@@ -9,6 +9,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.trollie.site"),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Trollie — Audio-guided focus sessions for your workday",
     template: "%s | Trollie",
@@ -33,6 +36,22 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Trollie",
+  description:
+    "A macOS desktop app that combats digital distraction through immersive, audio-guided focus sessions.",
+  applicationCategory: "ProductivityApplication",
+  operatingSystem: "macOS 12+",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  url: "https://www.trollie.site",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,6 +60,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
         <Analytics />
         <SpeedInsights />

@@ -4,6 +4,13 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Trollie terms of service — conditions for using the application.",
+  alternates: {
+    canonical: "/terms",
+  },
+  openGraph: {
+    title: "Terms of Service | Trollie",
+    description: "Trollie terms of service — conditions for using the application.",
+  },
 };
 
 export default function TermsOfService() {

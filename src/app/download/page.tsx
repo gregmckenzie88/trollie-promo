@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   title: "Download Trollie for macOS",
   description:
     "Download Trollie, the free macOS app for audio-guided focus sessions. Requires macOS 12 or later.",
+  alternates: {
+    canonical: "/download",
+  },
+  openGraph: {
+    title: "Download Trollie for macOS",
+    description:
+      "Download Trollie, the free macOS app for audio-guided focus sessions. Requires macOS 12 or later.",
+  },
 };
 
 export default function DownloadPage() {

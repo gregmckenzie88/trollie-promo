@@ -4,6 +4,13 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Refund Policy",
   description: "Trollie refund policy — all sales are final.",
+  alternates: {
+    canonical: "/refunds",
+  },
+  openGraph: {
+    title: "Refund Policy | Trollie",
+    description: "Trollie refund policy — all sales are final.",
+  },
 };
 
 export default function RefundPolicy() {

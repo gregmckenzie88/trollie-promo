@@ -166,6 +166,8 @@ export default function ScrollVideo() {
           <canvas
             ref={canvasRef}
             className="w-full rounded-lg aspect-[1920/1140] max-sm:aspect-[4/3]"
+            role="img"
+            aria-label="Trollie app demo — scroll to see the focus session interface in action"
           />
         </div>
         {/* Bottom fade to black */}
