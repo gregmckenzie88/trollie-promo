@@ -4,7 +4,8 @@
       "Bash(npx create-next-app@latest:*)",
       "Bash(npm run:*)",
       "Bash(npx next:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(ls -la /Users/gregmckenzie/Desktop/repos/trollie-landing/.next/static/chunks/ 2>/dev/null | head -30; echo \"===\"; find /Users/gregmckenzie/Desktop/repos/trollie-landing/.next/static -name \"*.js\" -exec du -sh {} \\\\; 2>/dev/null | sort -rh | head -20)"
     ]
   }
 }

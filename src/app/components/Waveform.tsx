@@ -6,10 +6,11 @@ export default function Waveform() {
   const [barCount, setBarCount] = useState<number | null>(null);
 
   useEffect(() => {
-    const update = () => setBarCount(window.innerWidth < 640 ? 32 : 48);
+    const mql = window.matchMedia('(min-width: 640px)');
+    const update = () => setBarCount(mql.matches ? 48 : 32);
     update();
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
+    mql.addEventListener('change', update);
+    return () => mql.removeEventListener('change', update);
   }, []);
 
   if (barCount === null) {

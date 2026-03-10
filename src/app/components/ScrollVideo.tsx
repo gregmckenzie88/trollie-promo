@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 const FRAME_COUNT = 90;
+const INITIAL_BATCH = 10;
 const FRAME_PATH = '/frames/frame-';
 
 function getFrameSrc(index: number): string {
@@ -10,11 +11,23 @@ function getFrameSrc(index: number): string {
   return `${FRAME_PATH}${num}.webp`;
 }
 
+function loadImage(src: string): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
 export default function ScrollVideo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const imagesRef = useRef<HTMLImageElement[]>([]);
+  const imagesRef = useRef<(HTMLImageElement | null)[]>(
+    Array(FRAME_COUNT).fill(null)
+  );
   const currentFrameRef = useRef(0);
+  const allLoadedRef = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -24,14 +37,12 @@ export default function ScrollVideo() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Preload all frames
-    const images: HTMLImageElement[] = [];
-    let loadedCount = 0;
+    const images = imagesRef.current;
 
     function drawFrame(index: number) {
       if (!ctx || !canvas) return;
       const img = images[index];
-      if (!img || !img.complete) return;
+      if (!img) return;
 
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
@@ -45,7 +56,6 @@ export default function ScrollVideo() {
 
       ctx.clearRect(0, 0, w, h);
 
-      // Draw image maintaining aspect ratio, centered
       const imgAspect = img.naturalWidth / img.naturalHeight;
       const canvasAspect = w / h;
 
@@ -65,18 +75,40 @@ export default function ScrollVideo() {
       ctx.drawImage(img, drawX, drawY, drawW, drawH);
     }
 
-    for (let i = 0; i < FRAME_COUNT; i++) {
-      const img = new Image();
-      img.src = getFrameSrc(i);
-      img.onload = () => {
-        loadedCount++;
-        if (i === 0) {
-          drawFrame(0);
-        }
-      };
-      images.push(img);
+    let cancelled = false;
+
+    // Load initial batch first, then remaining frames on intersection
+    async function loadBatch(start: number, end: number) {
+      const promises: Promise<void>[] = [];
+      for (let i = start; i < end && i < FRAME_COUNT; i++) {
+        if (images[i] || cancelled) continue;
+        promises.push(
+          loadImage(getFrameSrc(i)).then((img) => {
+            if (!cancelled) {
+              images[i] = img;
+              if (i === 0) drawFrame(0);
+            }
+          })
+        );
+      }
+      await Promise.all(promises);
     }
-    imagesRef.current = images;
+
+    // Load first batch immediately for the initial visible frame
+    loadBatch(0, INITIAL_BATCH);
+
+    // Load remaining frames when section enters viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !allLoadedRef.current) {
+          allLoadedRef.current = true;
+          observer.disconnect();
+          loadBatch(INITIAL_BATCH, FRAME_COUNT);
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(container);
 
     // Import and set up GSAP + ScrollTrigger
     let cleanup: (() => void) | undefined;
@@ -120,7 +152,9 @@ export default function ScrollVideo() {
     resizeObserver.observe(canvas);
 
     return () => {
+      cancelled = true;
       cleanup?.();
+      observer.disconnect();
       resizeObserver.disconnect();
     };
   }, []);
