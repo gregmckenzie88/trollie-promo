@@ -3,7 +3,10 @@ import Stripe from 'stripe'
 import { SignJWT, importPKCS8 } from 'jose'
 
 function getStripe(): Stripe {
-  return new Stripe(process.env.STRIPE_SECRET_KEY!)
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error('STRIPE_SECRET_KEY is not configured')
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY)
 }
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
@@ -24,7 +27,10 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     // Sign the activation token
-    const privateKeyPem = process.env.LICENSE_SIGNING_KEY!
+    if (!process.env.LICENSE_SIGNING_KEY) {
+      throw new Error('LICENSE_SIGNING_KEY is not configured')
+    }
+    const privateKeyPem = process.env.LICENSE_SIGNING_KEY
     const privateKey = await importPKCS8(privateKeyPem, 'EdDSA')
 
     const token = await new SignJWT({

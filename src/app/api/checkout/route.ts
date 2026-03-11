@@ -2,7 +2,13 @@ import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
 function getStripe(): Stripe {
-  return new Stripe(process.env.STRIPE_SECRET_KEY!)
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error('STRIPE_SECRET_KEY is not configured')
+  }
+  if (!process.env.STRIPE_PRICE_ID) {
+    throw new Error('STRIPE_PRICE_ID is not configured')
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY)
 }
 
 export async function GET(): Promise<NextResponse> {
@@ -11,7 +17,7 @@ export async function GET(): Promise<NextResponse> {
       mode: 'payment',
       line_items: [
         {
-          price: process.env.STRIPE_PRICE_ID!,
+          price: process.env.STRIPE_PRICE_ID,
           quantity: 1
         }
       ],
