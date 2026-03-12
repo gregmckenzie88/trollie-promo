@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const DOWNLOAD_URL =
-  "https://github.com/gregmckenzie88/trollie-promo/releases/download/0.5.3/Trollie-0.5.3.dmg";
+  "https://github.com/gregmckenzie88/trollie-promo/releases/download/0.5.15/Trollie-0.5.15.dmg";
 
 export default function DownloadClient() {
   const [started, setStarted] = useState(false);
