@@ -170,15 +170,6 @@ export default function ScrollVideo() {
             aria-label="Trollie app demo — scroll to see the focus session interface in action"
           />
         </div>
-        {/* Bottom fade to black */}
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
-          style={{
-            background:
-              'linear-gradient(to bottom, transparent, black)',
-          }}
-          aria-hidden="true"
-        />
       </div>
     </section>
   );

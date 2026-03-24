@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import DotGrid from "./components/DotGrid";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -64,6 +65,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <DotGrid />
         {children}
         <Analytics />
         <SpeedInsights />

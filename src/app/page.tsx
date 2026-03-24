@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <span className="text-xl font-semibold tracking-tight text-foreground">
             Trollie
@@ -111,7 +111,7 @@ export default function Home() {
       {/* CTA / Download */}
       <section
         id="download"
-        className="relative border-t border-border px-6 py-24 sm:py-32"
+        className="relative px-6 py-24 sm:py-32"
       >
         {/* Subtle glow behind CTA */}
         <div
@@ -150,7 +150,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border px-6 py-8">
+      <footer className="relative z-10 bg-black px-6 py-8">
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 sm:flex-row">
           <span className="text-sm font-medium text-muted-foreground">
             Trollie
@@ -194,8 +194,8 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="border border-border bg-background p-5 sm:p-8 transition-colors hover:bg-popover">
-      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-border text-primary">
+    <div className="bg-background p-5 sm:p-8 transition-colors hover:bg-popover">
+      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg text-primary">
         {icon}
       </div>
       <h3 className="mb-2 text-lg font-semibold text-foreground">{title}</h3>
